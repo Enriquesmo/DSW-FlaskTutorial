@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <form method="POST">
+        <input type="text" name="item" required>
+        <input type="hidden" name="action" value="add">
+        <input type="submit" value="Add Item">
+    </form>
+    <h2>Checklist</h2>
+    <ul>
+        {% for item in checklist %}
+            <li>
+                {{ item }}
+                <form method="POST" style="display: inline;">
+                    <input type="hidden" name="item" value="{{ item }}">
+                    <input type="hidden" name="action" value="complete">
+                    <input type="submit" value="Done">
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <h2>Completed</h2>
+    <ul>
+        {% for item in completed %}
+            <li>
+                {{ item }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
